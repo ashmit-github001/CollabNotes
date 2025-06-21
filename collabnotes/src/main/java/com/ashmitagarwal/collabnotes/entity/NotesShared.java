@@ -5,6 +5,7 @@ import com.ashmitagarwal.collabotes.enums.NoteAccessLevel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -13,6 +14,7 @@ import jakarta.persistence.ManyToOne;
 public class NotesShared {
 	
 	@Id
+	@GeneratedValue
 	public String id;
 	
 	@ManyToOne
@@ -48,6 +50,14 @@ public class NotesShared {
 
 	public void setNote(Note note) {
 		this.note = note;
+	}
+
+	public NoteAccessLevel getAccessLevel() {
+		return accessLevel;
+	}
+
+	public void setAccessLevel(NoteAccessLevel accessLevel) {
+		this.accessLevel = accessLevel;
 	}
 
 }

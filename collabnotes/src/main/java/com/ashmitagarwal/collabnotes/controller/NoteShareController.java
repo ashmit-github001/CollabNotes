@@ -1,5 +1,7 @@
 package com.ashmitagarwal.collabnotes.controller;
 
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +22,8 @@ public class NoteShareController {
 	}
 	
 	@PostMapping("")
-	public void shareNote(@RequestParam("noteId") String noteId, @RequestBody String listOfUserIds, @RequestParam("accessLevel") String accessLevel) {
-		
+	public void shareNote(@RequestParam("noteId") String noteId, @RequestBody Map<String, String> userAccessMap) {
+		sharedNotesService.shareNoteWithUsersBasedOnAccess(noteId, userAccessMap);
 	}
 	
 	@GetMapping("/accessLevel")

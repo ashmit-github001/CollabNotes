@@ -13,9 +13,9 @@ import com.ashmitagarwal.collabnotes.repository.UserRepository;
 @Service
 public class NotesService {
 	
-	NotesRepository notesRepository;
+	private NotesRepository notesRepository;
 	
-	UserRepository userRepository;
+	private UserRepository userRepository;
 	
 	public NotesService(NotesRepository notesRepository, UserRepository userRepository) {
 		this.notesRepository = notesRepository;
