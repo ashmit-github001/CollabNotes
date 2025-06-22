@@ -1,5 +1,6 @@
 package com.ashmitagarwal.collabnotes.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +28,8 @@ public class NoteShareController {
 	}
 	
 	@GetMapping("/accessLevel")
-	public void getAccessLevels() {
-		
+	public List<String> getAccessLevels() {
+		return sharedNotesService.getAccessLevels();
 	}
 	
 }

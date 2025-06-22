@@ -33,7 +33,7 @@ public class NoteController {
 		return notesService.GetUserCreatedNotes(userId);
 	}
 	
-	@PostMapping("/create")
+	@PostMapping
 	public boolean createNote(@RequestParam("userId") String userId, @RequestBody NoteDto createNoteDto)
 	{
 		System.out.println("To create a new note : " + createNoteDto.toString());

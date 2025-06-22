@@ -3,6 +3,8 @@ package com.ashmitagarwal.collabnotes.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -40,8 +42,7 @@ public class SharedNotesService {
 					notesShared.setNote(notesRepository.findById(noteId).get());
 					notesShared.setAccessLevel(NoteAccessLevel.valueOf(userAccessMap.get(userId)));
 					
-					listOfSharedNoteData.add(notesShared);
-				}
+					listOfSharedNoteData.add(notesShared);				}
 				else {
 					System.out.println(String.format("User {0} does not exist, hence skipped", userId));
 				}
@@ -53,5 +54,10 @@ public class SharedNotesService {
 		
 		System.out.println("Note does not exist.");
 		return false;
+	}
+	
+	public List<String> getAccessLevels() {
+		
+		return Stream.of(NoteAccessLevel.values()).map(NoteAccessLevel::name).collect(Collectors.toList());
 	}
 }
