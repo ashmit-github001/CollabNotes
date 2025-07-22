@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Collab Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="register-container">
+    <h1>Register</h1>
+    <input type="text" id="reg-email" placeholder="Email" />
+    <input type="password" id="reg-password" placeholder="Password" />
+    <button onclick="register()">Register</button>
+    <button onclick="goToLogin()">Back to Login</button>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:8080';
+
+    function register() {
+      const email = document.getElementById('reg-email').value;
+      const password = document.getElementById('reg-password').value;
+
+      fetch(`${API_BASE}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+        .then(res => {
+          if (res.ok) {
+            alert('Registered successfully!');
+            window.location.href = 'index.html';
+          } else {
+            alert('Registration failed!');
+          }
+        });
+    }
+
+    function goToLogin() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.ashmitagarwal.collabnotes.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ashmitagarwal.collabnotes.entity.Note;
 import com.ashmitagarwal.collabnotes.model.NoteDto;
+import com.ashmitagarwal.collabnotes.model.UserNoteResponseDto;
 import com.ashmitagarwal.collabnotes.service.NotesService;
 
 @RestController
@@ -27,15 +28,16 @@ public class NoteController {
 	}
 	
 	@GetMapping("{userId}")
-	public List<Note> GetUserCreatedNotes(@PathVariable("userId") String userId)
+	public Map<String, List<UserNoteResponseDto>> GetUserNotes(@PathVariable("userId") String userId)
 	{		
 		System.out.println("To get notes of a user");
-		return notesService.GetUserCreatedNotes(userId);
+		return notesService.GetUserNotes(userId);
 	}
 	
 	@PostMapping
 	public boolean createNote(@RequestParam("userId") String userId, @RequestBody NoteDto createNoteDto)
 	{
+		System.out.println("userId : " + userId);
 		System.out.println("To create a new note : " + createNoteDto.toString());
 		return notesService.createNote(userId, createNoteDto);
 	}
@@ -43,6 +45,7 @@ public class NoteController {
 	@PutMapping
 	public boolean updateNote(@RequestParam("noteId") String noteId, @RequestBody NoteDto updateNoteDto)
 	{
+		System.out.println("noteId : " + noteId);
 		System.out.println("To update an existing note by a user : " + updateNoteDto.toString());
 		return notesService.updateNote(noteId, updateNoteDto);
 	}

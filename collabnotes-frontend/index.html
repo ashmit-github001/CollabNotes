@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collab Notes - Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="login-container">
+    <h1>Collab Notes</h1>
+    <input type="text" id="email" name="username" placeholder="Email" />
+    <input type="password" id="password" name="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <button onclick="goToRegister()">Register</button>
+  </div>
+
+  <div id="dashboard" style="display: none">
+    <h1>Your Notes</h1>
+    <div id="user-notes"></div>
+
+    <h1>Shared With You</h1>
+    <div id="shared-notes"></div>
+
+    <button onclick="showCreateNoteForm()">+ Create Note</button>
+
+    <div id="note-form" style="display: none">
+      <textarea id="new-note-content" placeholder="Enter your note..."></textarea>
+      <button onclick="createNote()">Save Note</button>
+    </div>
+
+    <div id="share-form" style="display: none">
+      <input type="email" id="share-email" placeholder="User email" />
+      <select id="access-type">
+        <option value="VIEW">VIEW</option>
+        <option value="EDIT">EDIT</option>
+      </select>
+      <button onclick="shareNote()">Share</button>
+    </div>
+  </div>
+<div id="notepad" class="notepad" style="display: none">
+  <textarea id="notepad-content"></textarea>
+  <button onclick="saveNotepad()">Save</button>
+  <button onclick="closeNotepad()">Cancel</button>
+</div>
+
+
+  <script src="app.js"></script>
+</body>
+</html>

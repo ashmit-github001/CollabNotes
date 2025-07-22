@@ -23,8 +23,8 @@ public class NoteShareController {
 	}
 	
 	@PostMapping("")
-	public void shareNote(@RequestParam("noteId") String noteId, @RequestBody Map<String, String> userAccessMap) {
-		sharedNotesService.shareNoteWithUsersBasedOnAccess(noteId, userAccessMap);
+	public boolean shareNote(@RequestParam("noteId") String noteId, @RequestBody Map<String, String> userAccessMap) {
+		return sharedNotesService.shareNoteWithUsersBasedOnAccess(noteId, userAccessMap);
 	}
 	
 	@GetMapping("/accessLevel")
